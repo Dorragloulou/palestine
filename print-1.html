@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>فلسطين في القلب — بطاقات الطباعة 🇵🇸</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI','Tahoma','Arial',sans-serif;direction:rtl;padding:0;color:#111;background:#fff;font-size:11px;line-height:1.7;}
+@page{size:A4;margin:12mm;}
+@media print{.noprint{display:none!important;}}
+.noprint{position:fixed;top:0;left:0;right:0;background:#1a6b3a;color:#fff;padding:14px 20px;text-align:center;font-size:13px;z-index:100;line-height:2;}
+.noprint button{padding:8px 24px;background:#fff;color:#1a6b3a;border:none;border-radius:6px;font-size:13px;cursor:pointer;margin:4px 6px 0;font-weight:700;}
+.noprint button:hover{background:#e8f5ee;}
+.content{padding:16px;max-width:210mm;margin:0 auto;}
+@media screen{.content{padding-top:70px;}}
+
+/* FLAG */
+.flag{display:flex;height:5px;margin-bottom:14px;border-radius:2px;overflow:hidden;}
+.flag span{flex:1;}
+
+/* HEADER */
+.hdr{text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:3px solid #1a6b3a;}
+.hdr h1{font-size:22px;font-weight:700;color:#0d0d0d;margin-bottom:4px;}
+.hdr p{font-size:10px;color:#888;}
+
+/* SECTION */
+.slabel{font-size:13px;font-weight:700;color:#1a6b3a;margin:16px 0 10px;border-right:4px solid #1a6b3a;padding-right:8px;page-break-after:avoid;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+
+/* QUIZ CARD */
+.qc{background:#fff;border:1.5px solid #1a6b3a;border-radius:8px;padding:10px;page-break-inside:avoid;}
+.qc-h{display:flex;align-items:center;gap:6px;margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid #eee;}
+.qc-n{width:20px;height:20px;background:#1a6b3a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;}
+.qc-p{font-size:10px;font-weight:700;}
+.qc-r{font-size:8px;color:#888;}
+.qc-q{font-size:11px;font-weight:600;margin-bottom:7px;line-height:1.8;}
+.qc-os{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:6px;}
+.qc-o{padding:4px 7px;border:1px solid #ddd;border-radius:4px;font-size:9px;color:#444;line-height:1.5;}
+.qc-o.a{background:#e8f5ee;border-color:#1a6b3a;color:#1a6b3a;font-weight:700;}
+.qc-e{background:#f0f8f4;border-radius:4px;padding:5px 7px;font-size:9px;color:#1a6b3a;line-height:1.7;border-right:2px solid #1a6b3a;}
+.qc-s{font-size:7px;color:#bbb;margin-top:3px;}
+
+/* TF CARD */
+.tf{background:#fff;border:1.5px solid #b52a2a;border-radius:8px;padding:10px;page-break-inside:avoid;}
+.tf-h{font-size:8px;color:#888;margin-bottom:5px;}
+.tf-st{font-size:11px;font-weight:600;margin-bottom:6px;line-height:1.8;}
+.tf-a{padding:4px 7px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:4px;display:inline-block;}
+.tf-a.t{background:#e8f5ee;color:#1a6b3a;}
+.tf-a.f{background:#fae8e8;color:#b52a2a;}
+.tf-e{font-size:9px;color:#555;line-height:1.7;}
+.tf-s{font-size:7px;color:#bbb;margin-top:3px;}
+
+/* FACT */
+.fc{background:#fff;border:1.5px solid #c8a43a;border-radius:8px;padding:8px;text-align:center;page-break-inside:avoid;}
+.fc.r{border-color:#b52a2a;}
+.fc.g{border-color:#1a6b3a;}
+.fc-n{font-size:18px;font-weight:900;margin-bottom:2px;}
+.fc-n.red{color:#b52a2a;}
+.fc-n.green{color:#1a6b3a;}
+.fc-n.gold{color:#c8a43a;}
+.fc-l{font-size:9px;color:#555;line-height:1.6;}
+.fc-s{font-size:7px;color:#bbb;margin-top:3px;}
+
+/* STORY */
+.sc{background:#fff;border:1.5px solid #111;border-radius:8px;padding:10px;margin-bottom:10px;page-break-inside:avoid;border-right:4px solid #b52a2a;}
+.sc.gb{border-right-color:#1a6b3a;}
+.sc-t{font-size:12px;font-weight:700;margin-bottom:2px;}
+.sc-r{font-size:8px;color:#888;margin-bottom:6px;}
+.sc-b{font-size:10px;color:#444;line-height:1.9;}
+.sc-b strong{color:#111;font-weight:700;}
+.sc-s{font-size:7px;color:#bbb;margin-top:5px;border-top:1px solid #eee;padding-top:3px;}
+
+/* QUOTE */
+.qt{background:#0d0d0d;color:#f0ebe0;border-radius:8px;padding:12px;text-align:center;page-break-inside:avoid;}
+.qt-t{font-style:italic;font-size:13px;line-height:2;color:#f0ebe0;}
+.qt-a{font-size:9px;color:#888;margin-top:4px;}
+
+/* FINAL */
+.fin{background:#0d0d0d;color:#f0ebe0;border-radius:10px;padding:16px;text-align:center;page-break-inside:avoid;margin-top:14px;}
+.fin-names{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:10px;}
+.fin-nm{background:#1e1e1e;border:1px solid #b52a2a;border-radius:4px;padding:3px 8px;font-size:9px;color:#f0a0a0;}
+.fin-q{font-size:13px;line-height:2.2;color:#f0ebe0;}
+.fin-q .hl{color:#b52a2a;font-size:15px;font-weight:700;}
+.fin-m{font-size:10px;color:#888;margin-top:8px;font-style:italic;line-height:1.9;}
+
+/* SEPARATOR */
+hr{border:none;border-top:2px dashed #ddd;margin:14px 0;}
+
+/* HANDALA SVG */
+.handala{text-align:center;margin:8px 0;}
+</style>
+</head>
+<body>
+
+<div class="noprint">
+  🖨️ هذه الصفحة جاهزة للطباعة — اطبعها مباشرة أو احفظها كـ PDF<br>
+  <button onclick="window.print()">🖨️ طباعة / حفظ كـ PDF</button>
+  <button onclick="window.close()">✕ إغلاق</button>
+</div>
+
+<div class="content">
+
+<div class="flag"><span style="background:#0d0d0d"></span><span style="background:#ddd"></span><span style="background:#1a6b3a"></span><span style="background:#b52a2a"></span></div>
+
+<div class="hdr">
+  <div class="handala">
+    <svg width="50" height="70" viewBox="0 0 80 110">
+      <circle cx="40" cy="18" r="14" fill="none" stroke="#111" stroke-width="2.5"/>
+      <line x1="40" y1="32" x2="40" y2="70" stroke="#111" stroke-width="2.5"/>
+      <line x1="40" y1="45" x2="22" y2="55" stroke="#111" stroke-width="2.5"/>
+      <line x1="40" y1="45" x2="58" y2="38" stroke="#111" stroke-width="2.5"/>
+      <line x1="40" y1="70" x2="28" y2="100" stroke="#111" stroke-width="2.5"/>
+      <line x1="40" y1="70" x2="52" y2="100" stroke="#111" stroke-width="2.5"/>
+    </svg>
+  </div>
+  <h1>🇵🇸 فلسطين في القلب — بطاقات البوث</h1>
+  <p>أسئلة وحقائق وقصص موثّقة من مصادر فلسطينية وعربية ودولية | للطباعة والتوزيع في البوث الجامعي</p>
+</div>
+
+<!-- ===== QUOTES ===== -->
+<div class="g2">
+  <div class="qt"><div class="qt-t">«أنا لا أرسم للمجلات... أنا أرسم للناس»</div><div class="qt-a">— ناجي العلي، خالق حنظلة</div></div>
+  <div class="qt"><div class="qt-t">«على هذه الأرض ما يستحق الحياة»</div><div class="qt-a">— محمود درويش</div></div>
+</div>
+<div class="g2">
+  <div class="qt"><div class="qt-t">«إذا كان لا بد أن أموت، فليكن موتي قصة»</div><div class="qt-a">— رفعت العرعير (قبل أسابيع من استشهاده)</div></div>
+  <div class="qt"><div class="qt-t">«ما القضية؟ ليست قضية فحسب... إنها قضية وطن»</div><div class="qt-a">— غسان كنفاني</div></div>
+</div>
+
+<hr>
+
+<!-- ===== FACTS ===== -->
+<div class="slabel">📊 أرقام وحقائق موثّقة</div>
+<div class="g3">
+  <div class="fc g"><div class="fc-n green">+750,000</div><div class="fc-l">فلسطيني هُجِّروا في النكبة 1948</div><div class="fc-s">مؤسسة الدراسات الفلسطينية | الأونروا</div></div>
+  <div class="fc r"><div class="fc-n red">+530</div><div class="fc-l">قرية فلسطينية دُمِّرت عام 1948</div><div class="fc-s">Palestine Remembered</div></div>
+  <div class="fc"><div class="fc-n gold">+5.9M</div><div class="fc-l">لاجئ فلسطيني مسجّل لدى الأونروا</div><div class="fc-s">الأونروا 2023</div></div>
+  <div class="fc r"><div class="fc-n red">+17,000</div><div class="fc-l">طفل استُشهد في غزة منذ أكتوبر 2023</div><div class="fc-s">وزارة الصحة | يونيسف 2024</div></div>
+  <div class="fc"><div class="fc-n gold">17+ سنة</div><div class="fc-l">حصار متواصل على غزة منذ 2007</div><div class="fc-s">الأونروا | منظمة العفو</div></div>
+  <div class="fc r"><div class="fc-n red">+180</div><div class="fc-l">صحفي استُشهد في غزة — رقم تاريخي</div><div class="fc-s">CPJ 2024</div></div>
+  <div class="fc g"><div class="fc-n green">+11,000</div><div class="fc-l">أسير فلسطيني في السجون الإسرائيلية</div><div class="fc-s">هيئة شؤون الأسرى | وفا</div></div>
+  <div class="fc"><div class="fc-n gold">1948</div><div class="fc-l">سنة النكبة — بداية التهجير المنظّم</div><div class="fc-s">مؤسسة الدراسات الفلسطينية</div></div>
+  <div class="fc g"><div class="fc-n green">5000+ سنة</div><div class="fc-l">عمر مدينة أريحا — أقدم مدينة في التاريخ</div><div class="fc-s">اليونسكو</div></div>
+</div>
+
+<hr>
+
+<!-- ===== STORIES ===== -->
+<div class="slabel">📖 قصص لن تُنسى</div>
+
+<div class="sc">
+  <div class="sc-t">🌸 هند رجب — الطفلة التي طلبت النجاة | 29 يناير 2024</div>
+  <div class="sc-r">6 سنوات | غزة</div>
+  <div class="sc-b">هند رجب ذات الست سنوات كانت محاصرة داخل سيارة بين جثث ستة من عائلتها. اتصلت بالهلال الأحمر: <strong>«تعالوا خذوني، أنا خايفة»</strong>. ظلّت على الهاتف ساعات. أُرسل مسعفان لإنقاذها — وُجدت جثثهم الثلاثة في السيارة المحترقة.</div>
+  <div class="sc-s">📚 الهلال الأحمر الفلسطيني | Human Rights Watch | BBC عربي</div>
+</div>
+
+<div class="g2">
+<div class="sc gb">
+  <div class="sc-t">📺 شيرين أبو عاقلة | مايو 2022 | جنين</div>
+  <div class="sc-r">صحفية الجزيرة 25 عاماً</div>
+  <div class="sc-b">أُصيبت برصاصة قنّاص في رأسها وهي ترتدي <strong>خوذة وسترة PRESS</strong>. تحقيق الأمم المتحدة: النار من قوات إسرائيلية. لم يُحاسَب أحد.</div>
+  <div class="sc-s">📚 OHCHR 2022 | الجزيرة</div>
+</div>
+<div class="sc">
+  <div class="sc-t">🕊️ رفعت العرعير | ديسمبر 2023 | غزة</div>
+  <div class="sc-r">شاعر وأستاذ جامعي</div>
+  <div class="sc-b">كتب <strong>«إذا كان لا بد أن أموت فليكن موتي قصة»</strong> قبل أسابيع من استشهاده في غارة على الشجاعية. قُرئت في برلمانات العالم.</div>
+  <div class="sc-s">📚 The Guardian | BBC عربي</div>
+</div>
+</div>
+
+<div class="g2">
+<div class="sc gb">
+  <div class="sc-t">🩺 رزان النجار | يونيو 2018 | غزة</div>
+  <div class="sc-r">مسعفة متطوعة 21 عاماً</div>
+  <div class="sc-b">أُصيبت <strong>برصاصة حية في صدرها</strong> وهي ترفع يديها لإسعاف الجرحى في مسيرات العودة الكبرى. ارتدت المريول الأبيض لتكون مرئية — لكنهم استهدفوها.</div>
+  <div class="sc-s">📚 وزارة الصحة الفلسطينية | الأونروا | BBC عربي</div>
+</div>
+<div class="sc">
+  <div class="sc-t">📚 غسان كنفاني | يوليو 1972 | بيروت</div>
+  <div class="sc-r">أديب ومفكر — 36 عاماً</div>
+  <div class="sc-b">اغتيل بتفجير سيارته المفخخة على يد الموساد. <strong>استُشهدت معه ابنة أخته لميس</strong> ذات الـ17 عاماً. ترك «رجال في الشمس» و«عائد إلى حيفا».</div>
+  <div class="sc-s">📚 مؤسسة غسان كنفاني الثقافية | مؤسسة الدراسات الفلسطينية</div>
+</div>
+</div>
+
+<div class="sc">
+  <div class="sc-t">🇹🇳 محمد الزواري — مهندس صفاقس الذي طيّر أبابيل فلسطين | ديسمبر 2016</div>
+  <div class="sc-r">مهندس تونسي | صفاقس</div>
+  <div class="sc-b">تخرّج من المدرسة الوطنية للمهندسين بصفاقس. عاش 20 عاماً في المنفى متخفياً باسم «مراد». أشرف على تطوير <strong>طائرات أبابيل المسيّرة</strong> في كتائب القسام. اغتاله الموساد أمام منزله بـ<strong>8 رصاصات</strong>. بلدية صفاقس غيّرت اسم شارعه تكريماً له. طائراته لعبت دوراً في طوفان الأقصى 2023.</div>
+  <div class="sc-s">📚 كتائب القسام | يورونيوز عربي | بوابة صفاقس الإلكترونية | نون بوست</div>
+</div>
+
+<hr>
+
+<!-- ===== QUIZ CARDS ===== -->
+<div class="slabel">🧠 بطاقات الاختبار (11 سؤال)</div>
+<div class="g2">
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">1</div><div><div class="qc-p">🌸 هند رجب</div><div class="qc-r">6 سنوات | يناير 2024</div></div></div>
+  <div class="qc-q">ما الذي حدث لهند رجب حين اتصلت بالهلال الأحمر؟</div>
+  <div class="qc-os">
+    <div class="qc-o">تم إنقاذها ونقلها لمستشفى</div>
+    <div class="qc-o a">✓ قُتلت مع المسعفَين</div>
+    <div class="qc-o">أُخليت إلى جنوب غزة</div>
+    <div class="qc-o">نجت وهاجرت مع عائلتها</div>
+  </div>
+  <div class="qc-e">ظلّت على الهاتف ساعات. أُرسل مسعفان. وُجدت جثثهم الثلاثة في السيارة المحترقة.</div>
+  <div class="qc-s">📚 الهلال الأحمر الفلسطيني | HRW | BBC</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">2</div><div><div class="qc-p">🙏 الشيخ أحمد ياسين</div><div class="qc-r">مؤسس حماس — اغتيل 2004</div></div></div>
+  <div class="qc-q">كيف اغتيل الشيخ أحمد ياسين؟</div>
+  <div class="qc-os">
+    <div class="qc-o">في اشتباك مسلح</div>
+    <div class="qc-o">اعتُقل وتوفي في السجن</div>
+    <div class="qc-o a">✓ بصاروخ بعد صلاة الفجر على كرسيه المتحرك</div>
+    <div class="qc-o">في تفجير سيارة</div>
+  </div>
+  <div class="qc-e">مشلول رباعي منذ صغره. أطلقت طائرة إسرائيلية صاروخاً لحظة خروجه من المسجد.</div>
+  <div class="qc-s">📚 BBC عربي | الجزيرة | وفا</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">3</div><div><div class="qc-p">📺 شيرين أبو عاقلة</div><div class="qc-r">اغتيلت مايو 2022</div></div></div>
+  <div class="qc-q">ماذا كانت شيرين ترتدي لحظة إطلاق النار عليها؟</div>
+  <div class="qc-os">
+    <div class="qc-o">ملابس عادية</div>
+    <div class="qc-o a">✓ خوذة وسترة PRESS</div>
+    <div class="qc-o">زي عسكري</div>
+    <div class="qc-o">معطف طبي</div>
+  </div>
+  <div class="qc-e">استهدافها رغم تجهيزات الصحافة جريمة بموجب القانون الدولي. تحقيق OHCHR أشار للجيش الإسرائيلي.</div>
+  <div class="qc-s">📚 OHCHR 2022 | الجزيرة</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">4</div><div><div class="qc-p">✏️ ناجي العلي وحنظلة</div><div class="qc-r">اغتيل لندن 1987</div></div></div>
+  <div class="qc-q">لماذا يُدير حنظلة ظهره ولا يُظهر وجهه؟</div>
+  <div class="qc-os">
+    <div class="qc-o">لأنه يبكي</div>
+    <div class="qc-o">لأن ناجي لم يُجد رسم الوجوه</div>
+    <div class="qc-o a">✓ أبى أن يُري وجهه حتى تتحرر فلسطين</div>
+    <div class="qc-o">لأنه يراقب العدو</div>
+  </div>
+  <div class="qc-e">حنظلة في العاشرة — سن ناجي حين غادر فلسطين. ظهره رفض وموقف.</div>
+  <div class="qc-s">📚 أرشيف ناجي العلي | مؤسسة الدراسات الفلسطينية</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">5</div><div><div class="qc-p">🕊️ رفعت العرعير</div><div class="qc-r">استُشهد ديسمبر 2023</div></div></div>
+  <div class="qc-q">ما مطلع قصيدة رفعت الشهيرة؟</div>
+  <div class="qc-os">
+    <div class="qc-o">«غزة لن تموت أبداً»</div>
+    <div class="qc-o a">✓ «إذا كان لا بد أن أموت فليكن موتي قصة»</div>
+    <div class="qc-o">«أنا أكتب لأحيا»</div>
+    <div class="qc-o">«وطني يسكن في دمي»</div>
+  </div>
+  <div class="qc-e">كتبها قبل أسابيع من استشهاده. طافت برلمانات العالم.</div>
+  <div class="qc-s">📚 حساب رفعت الرسمي | The Guardian</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">6</div><div><div class="qc-p">🔑 النكبة 1948</div><div class="qc-r">الذاكرة الجماعية</div></div></div>
+  <div class="qc-q">كم قرية فلسطينية دُمِّرت عام 1948؟</div>
+  <div class="qc-os">
+    <div class="qc-o">أكثر من 100</div>
+    <div class="qc-o">أكثر من 250</div>
+    <div class="qc-o a">✓ أكثر من 530</div>
+    <div class="qc-o">أكثر من 900</div>
+  </div>
+  <div class="qc-e">530+ قرية مع تهجير 750,000+ فلسطيني.</div>
+  <div class="qc-s">📚 Palestine Remembered | مؤسسة الدراسات الفلسطينية</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">7</div><div><div class="qc-p">⚔️ يحيى السنوار</div><div class="qc-r">رئيس حماس في غزة</div></div></div>
+  <div class="qc-q">كيف خرج السنوار من السجون الإسرائيلية؟</div>
+  <div class="qc-os">
+    <div class="qc-o">هرب من السجن</div>
+    <div class="qc-o a">✓ صفقة تبادل أسرى 2011</div>
+    <div class="qc-o">قضى محكوميته</div>
+    <div class="qc-o">عفو رئاسي</div>
+  </div>
+  <div class="qc-e">صفقة شاليط: 1027 أسيراً فلسطينياً مقابل جندي واحد. قضى 22 عاماً.</div>
+  <div class="qc-s">📚 وكالة وفا | الجزيرة</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">8</div><div><div class="qc-p">🩺 رزان النجار</div><div class="qc-r">مسعفة — يونيو 2018</div></div></div>
+  <div class="qc-q">ماذا كانت رزان تفعل لحظة إطلاق النار عليها؟</div>
+  <div class="qc-os">
+    <div class="qc-o">تشارك في مظاهرة</div>
+    <div class="qc-o a">✓ تُسعف الجرحى وترفع يديها</div>
+    <div class="qc-o">تحمل سلاحاً</div>
+    <div class="qc-o">تحاول عبور السياج</div>
+  </div>
+  <div class="qc-e">أُصيبت برصاصة في صدرها وهي ترفع يديها. عمرها 21 سنة فقط.</div>
+  <div class="qc-s">📚 وزارة الصحة الفلسطينية | الأونروا</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">9</div><div><div class="qc-p">📚 غسان كنفاني</div><div class="qc-r">اغتيل 1972 | بيروت</div></div></div>
+  <div class="qc-q">كيف اغتيل غسان كنفاني؟</div>
+  <div class="qc-os">
+    <div class="qc-o">بإطلاق نار</div>
+    <div class="qc-o a">✓ بتفجير سيارته المفخخة</div>
+    <div class="qc-o">في غارة جوية</div>
+    <div class="qc-o">مسموماً</div>
+  </div>
+  <div class="qc-e">فجّرها الموساد أمام منزله. استُشهدت معه ابنة أخته لميس. عمره 36 عاماً.</div>
+  <div class="qc-s">📚 مؤسسة غسان كنفاني الثقافية</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">10</div><div><div class="qc-p">🎤 أبو عبيدة</div><div class="qc-r">الناطق العسكري</div></div></div>
+  <div class="qc-q">ما اسم الكتائب التي يتحدث باسمها أبو عبيدة؟</div>
+  <div class="qc-os">
+    <div class="qc-o">كتائب شهداء الأقصى</div>
+    <div class="qc-o a">✓ كتائب عز الدين القسام</div>
+    <div class="qc-o">سرايا القدس</div>
+    <div class="qc-o">كتائب أبو علي مصطفى</div>
+  </div>
+  <div class="qc-e">الجناح العسكري لحركة حماس. يظهر دائماً ملثماً.</div>
+  <div class="qc-s">📚 كتائب القسام | الجزيرة</div>
+</div>
+
+<div class="qc">
+  <div class="qc-h"><div class="qc-n">11</div><div><div class="qc-p">🇹🇳 محمد الزواري</div><div class="qc-r">مهندس تونسي — صفاقس — اغتيل 2016</div></div></div>
+  <div class="qc-q">ما المشروع الذي أشرف عليه المهندس التونسي محمد الزواري في كتائب القسام؟</div>
+  <div class="qc-os">
+    <div class="qc-o">شبكة أنفاق المقاومة</div>
+    <div class="qc-o a">✓ مشروع طائرات أبابيل المسيّرة</div>
+    <div class="qc-o">منظومة صواريخ القسام</div>
+    <div class="qc-o">شبكة اتصالات مشفرة</div>
+  </div>
+  <div class="qc-e">مهندس من صفاقس. أشرف على طائرات أبابيل. اغتاله الموساد بـ8 رصاصات أمام منزله. طائراته لعبت دوراً في طوفان الأقصى.</div>
+  <div class="qc-s">📚 كتائب القسام | يورونيوز عربي | بوابة صفاقس</div>
+</div>
+
+</div>
+
+<hr>
+
+<!-- ===== TF CARDS ===== -->
+<div class="slabel">⚖️ بطاقات صح أم خطأ (8 عبارات)</div>
+<div class="g2">
+
+<div class="tf">
+  <div class="tf-h">👶 هند رجب</div>
+  <div class="tf-st">أُنقذت هند رجب بعد اتصالها بالهلال الأحمر.</div>
+  <div class="tf-a f">✗ خطأ</div>
+  <div class="tf-e">لم تُنقذ. وُجدت جثتها مع المسعفَين في السيارة المحترقة.</div>
+  <div class="tf-s">📚 الهلال الأحمر الفلسطيني | HRW</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">📺 شيرين أبو عاقلة</div>
+  <div class="tf-st">خلص تحقيق الأمم المتحدة إلى أن النار أُطلقت من قوات إسرائيلية.</div>
+  <div class="tf-a t">✓ صح</div>
+  <div class="tf-e">تحقيق OHCHR 2022 خلص لذلك. لا محاسبة حتى الآن.</div>
+  <div class="tf-s">📚 OHCHR 2022</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">🍉 البطيخة الفلسطينية</div>
+  <div class="tf-st">البطيخة أصبحت رمزاً فلسطينياً حين مُنع رفع العلم.</div>
+  <div class="tf-a t">✓ صح</div>
+  <div class="tf-e">بعد حظر العلم 1967، رسموا البطيخة لأن قطعها يُظهر ألوان العلم الأربعة.</div>
+  <div class="tf-s">📚 مؤسسة الدراسات الفلسطينية</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">⚔️ يحيى السنوار</div>
+  <div class="tf-st">أُفرج عن السنوار ضمن صفقة تبادل أسرى.</div>
+  <div class="tf-a t">✓ صح</div>
+  <div class="tf-e">صفقة شاليط 2011: 1027 أسيراً مقابل جندي واحد.</div>
+  <div class="tf-s">📚 وفا | الجزيرة</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">🙏 الشيخ أحمد ياسين</div>
+  <div class="tf-st">كان الشيخ أحمد ياسين قادراً على المشي حين اغتيل.</div>
+  <div class="tf-a f">✗ خطأ</div>
+  <div class="tf-e">كان مشلولاً رباعياً منذ صغره. لا يتحرك إلا بكرسي متحرك.</div>
+  <div class="tf-s">📚 BBC عربي | الجزيرة</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">⚖️ قرار 194</div>
+  <div class="tf-st">قرار الأمم المتحدة 194 الخاص بحق العودة طُبِّق فعلياً.</div>
+  <div class="tf-a f">✗ خطأ</div>
+  <div class="tf-e">صدر 1948 لكنه لم يُطبَّق أبداً. الملايين لا يزالون يُطالبون.</div>
+  <div class="tf-s">📚 الأمم المتحدة | مؤسسة الدراسات الفلسطينية</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">🧵 التطريز الفلسطيني</div>
+  <div class="tf-st">التطريز الفلسطيني مسجّل في التراث العالمي لليونسكو.</div>
+  <div class="tf-a t">✓ صح</div>
+  <div class="tf-e">سجّلته اليونسكو 2021 كتراث ثقافي غير مادي.</div>
+  <div class="tf-s">📚 اليونسكو 2021 | وفا</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">📚 غسان كنفاني</div>
+  <div class="tf-st">غسان كنفاني اغتيل وعمره 60 عاماً.</div>
+  <div class="tf-a f">✗ خطأ</div>
+  <div class="tf-e">اغتيل وعمره 36 عاماً فقط. ترك إرثاً أدبياً ضخماً في سنوات قليلة.</div>
+  <div class="tf-s">📚 مؤسسة غسان كنفاني الثقافية</div>
+</div>
+
+<div class="tf">
+  <div class="tf-h">🇹🇳 محمد الزواري</div>
+  <div class="tf-st">المهندس التونسي محمد الزواري اغتيل في فلسطين.</div>
+  <div class="tf-a f">✗ خطأ</div>
+  <div class="tf-e">اغتيل في صفاقس بتونس أمام منزله على يد الموساد. خدم القضية من تونس وسوريا والسودان.</div>
+  <div class="tf-s">📚 يورونيوز عربي | نون بوست</div>
+</div>
+
+</div>
+
+<hr>
+
+<!-- ===== FINAL QUESTION ===== -->
+<div class="fin">
+  <div class="fin-names">
+    <span class="fin-nm">شيرين — قُتلت وهي تُوثّق</span>
+    <span class="fin-nm">رزان — قُتلت وهي تُسعف</span>
+    <span class="fin-nm">رفعت — قُتل وهو يكتب</span>
+    <span class="fin-nm">هند — قُتلت وهي تطلب النجاة</span>
+    <span class="fin-nm">غسان — قُتل وهو يُفكّر</span>
+    <span class="fin-nm">ناجي — قُتل وهو يرسم</span>
+    <span class="fin-nm">الشيخ ياسين — اغتيل وهو خارج من صلاة الفجر</span>
+    <span class="fin-nm">الزواري — اغتيل في صفاقس وهو يُطيّر أبابيل فلسطين</span>
+  </div>
+  <div class="fin-q">
+    كل واحد من هؤلاء قدّم ما يملك.<br><br>
+    أنت وصلت للجامعة. لديك صوت وهاتف ووقت وعقل.<br><br>
+    <span class="hl">— ماذا فعلت؟ —</span><br><br>
+    وإن لم تكن فعلت شيئاً بعد...<br>
+    <span class="hl">— ماذا تنتظر؟ —</span>
+  </div>
+  <div class="fin-m">المعرفة التي تقف بلا حراك... هل هي حقاً معرفة؟<br>شارك. قاطع. تكلّم. لا تكن شاهد زور.</div>
+</div>
+
+<div style="text-align:center;font-size:8px;color:#ccc;margin-top:14px;padding-top:8px;border-top:1px solid #eee;">
+  المصادر: الأونروا (unrwa.org) | وفا (wafa.ps) | مؤسسة الدراسات الفلسطينية (palestine-studies.org) | Palestine Remembered | OHCHR | يونيسف | CPJ | BBC عربي | الجزيرة | HRW<br>
+  🇵🇸 للتوزيع الحر مع ذكر المصادر
+</div>
+
+</div>
+</body>
+</html>
