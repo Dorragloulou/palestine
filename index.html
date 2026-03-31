@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>فلسطين في القلب 🇵🇸</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --card: #141414;
+      --card2: #1a1a1a;
+      --green: #1a6b3a;
+      --green2: #2d8a52;
+      --red: #b52a2a;
+      --red2: #d44;
+      --gold: #c8a43a;
+      --gold2: #e0c060;
+      --text: #f0ebe0;
+      --text2: #bbb;
+      --text3: #777;
+      --border: #2a2a2a;
+      --font-body: 'Tajawal', sans-serif;
+      --font-display: 'Amiri', serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* FLAG BAR */
+    .flagbar {
+      display: flex;
+      height: 4px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .flagbar span {
+      flex: 1;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 80%, rgba(26, 107, 58, .15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .handala-wrap {
+      margin-bottom: 30px;
+      opacity: .9;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -.5px;
+    }
+
+    .hero-title .hl {
+      color: var(--green2);
+    }
+
+    .hero-sub {
+      font-size: clamp(.85rem, 2.5vw, 1.05rem);
+      color: var(--text2);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 2;
+    }
+
+    .hero-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .hero-btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+      border: none;
+    }
+
+    .hero-btn.primary {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .hero-btn.primary:hover {
+      background: var(--green2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(26, 107, 58, .4);
+    }
+
+    .hero-btn.outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .hero-btn.outline:hover {
+      border-color: var(--green);
+      color: var(--green2);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: .85rem;
+      color: var(--text3);
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    /* TAB NAV */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--card);
+      color: var(--text3);
+      border: 1px solid var(--border);
+      transition: all .3s;
+    }
+
+    .tab.active {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* QUIZ */
+    .quiz-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all .3s;
+    }
+
+    .quiz-card.answered {
+      opacity: .85;
+    }
+
+    .qc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .qc-num {
+      width: 32px;
+      height: 32px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .qc-person {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .qc-role {
+      font-size: .7rem;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    .qc-question {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.9;
+      padding-right: 44px;
+    }
+
+    .qc-opts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    @media(max-width:500px) {
+      .qc-opts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .qc-opt {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: .82rem;
+      color: var(--text2);
+      background: var(--card2);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all .25s;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .qc-opt:hover:not(.disabled) {
+      border-color: var(--green);
+      color: var(--text);
+      background: rgba(26, 107, 58, .1);
+    }
+
+    .qc-opt.correct {
+      background: rgba(26, 107, 58, .15);
+      border-color: var(--green);
+      color: var(--green2);
+      font-weight: 600;
+    }
+
+    .qc-opt.wrong {
+      background: rgba(181, 42, 42, .1);
+      border-color: var(--red);
+      color: var(--red2);
+    }
+
+    .qc-opt.disabled {
+      cursor: default;
+      opacity: .5;
+    }
+
+    .qc-opt.disabled.correct {
+      opacity: 1;
+    }
+
+    .qc-explain {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: rgba(26, 107, 58, .08);
+      border-radius: 10px;
+      border-right: 3px solid var(--green);
+      font-size: .8rem;
+      color: var(--green2);
+      line-height: 1.9;
+    }
+
+    .qc-explain.show {
+      display: block;
+      animation: fadeIn .4s;
+    }
+
+    .qc-source {
+      font-size: .7rem;
+      color: var(--text3);
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* TRUE/FALSE */
+    .tf-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .tf-stmt {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.9;
+    }
+
+    .tf-btns {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .tf-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--card2);
+      color: var(--text2);
+      transition: all .25s;
+      text-align: center;
+    }
+
+    .tf-btn:hover:not(.disabled) {
+      border-color: var(--green);
+      color: var(--text);
+    }
+
+    .tf-btn.right {
+      background: rgba(26, 107, 58, .15);
+      border-color: var(--green);
+      color: var(--green2);
+    }
+
+    .tf-btn.wrongpick {
+      background: rgba(181, 42, 42, .1);
+      border-color: var(--red);
+      color: var(--red2);
+    }
+
+    .tf-btn.disabled {
+      cursor: default;
+      opacity: .5;
+    }
+
+    .tf-btn.disabled.right {
+      opacity: 1;
+    }
+
+    /* FACTS */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .fact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      transition: transform .3s;
+    }
+
+    .fact-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .fact-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .fact-num.green {
+      color: var(--green2);
+    }
+
+    .fact-num.red {
+      color: var(--red2);
+    }
+
+    .fact-num.gold {
+      color: var(--gold2);
+    }
+
+    .fact-label {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .fact-src {
+      font-size: .65rem;
+      color: var(--text3);
+      margin-top: 8px;
+    }
+
+    /* STORIES */
+    .story-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border-right: 4px solid var(--red);
+      transition: all .3s;
+    }
+
+    .story-card.green-border {
+      border-right-color: var(--green);
+    }
+
+    .story-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .story-role {
+      font-size: .72rem;
+      color: var(--text3);
+      margin-bottom: 12px;
+    }
+
+    .story-body {
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 2;
+    }
+
+    .story-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .story-src {
+      font-size: .68rem;
+      color: var(--text3);
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* QUOTES */
+    .quote-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 2.2;
+    }
+
+    .quote-author {
+      font-size: .78rem;
+      color: var(--text3);
+      margin-top: 8px;
+    }
+
+    /* FINAL */
+    .final-section {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .final-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .final-name {
+      background: var(--card);
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: .75rem;
+      color: #f0a0a0;
+      line-height: 1.6;
+    }
+
+    .final-q {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--text);
+      line-height: 2.2;
+      margin-bottom: 20px;
+    }
+
+    .final-q .bighl {
+      color: var(--red2);
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+
+    .final-mirror {
+      font-size: .85rem;
+      color: var(--text3);
+      line-height: 2;
+      font-style: italic;
+    }
+
+    /* SCORE BAR */
+    .score-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, .95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 99;
+      font-size: .8rem;
+      transform: translateY(100%);
+      transition: transform .4s;
+    }
+
+    .score-bar.show {
+      transform: translateY(0);
+    }
+
+    .score-val {
+      font-weight: 800;
+      color: var(--green2);
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: .7rem;
+      color: var(--text3);
+      line-height: 2;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--green2);
+      text-decoration: none;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    .animate {
+      animation: fadeIn .5s both;
+    }
+
+    /* SYMBOLS BAR */
+    .symbols-strip {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0 10px;
+      opacity: .7;
+    }
+
+    .symbol-item {
+      text-align: center;
+    }
+
+    .symbol-item svg {
+      display: block;
+      margin: 0 auto 4px;
+    }
+
+    .symbol-label {
+      font-size: .6rem;
+      color: var(--text3);
+    }
+
+    /* PERSON ICON */
+    .person-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    /* IMAGE CARDS (for visual sections) */
+    .visual-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    .visual-banner svg {
+      flex-shrink: 0;
+    }
+
+    .visual-banner-text {
+      flex: 1;
+    }
+
+    .visual-banner-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .visual-banner-sub {
+      font-size: .8rem;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    /* PAGE PANELS */
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    /* SCROLL TOP */
+    .scroll-top {
+      position: fixed;
+      bottom: 70px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 98;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .4);
+      transition: all .3s;
+    }
+
+    .scroll-top.show {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLAG BAR -->
+  <div class="flagbar">
+    <span style="background:#0d0d0d"></span>
+    <span style="background:#fff"></span>
+    <span style="background:#1a6b3a"></span>
+    <span style="background:#b52a2a"></span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="handala-wrap">
+      <svg width="80" height="110" viewBox="0 0 80 110" style="animation:float 3s ease-in-out infinite">
+        <circle cx="40" cy="18" r="14" fill="none" stroke="#f0ebe0" stroke-width="2" />
+        <line x1="40" y1="32" x2="40" y2="70" stroke="#f0ebe0" stroke-width="2" />
+        <line x1="40" y1="45" x2="22" y2="55" stroke="#f0ebe0" stroke-width="2" />
+        <line x1="40" y1="45" x2="58" y2="38" stroke="#f0ebe0" stroke-width="2" />
+        <line x1="40" y1="70" x2="28" y2="100" stroke="#f0ebe0" stroke-width="2" />
+        <line x1="40" y1="70" x2="52" y2="100" stroke="#f0ebe0" stroke-width="2" />
+        <circle cx="28" cy="18" r="1.5" fill="#f0ebe0" opacity=".3" />
+        <text x="40" y="108" text-anchor="middle" font-size="7" fill="#777" font-family="Amiri,serif">حنظلة</text>
+      </svg>
+    </div>
+    <h1 class="hero-title">🇵🇸 فلسطين في <span class="hl">القلب</span></h1>
+    <p class="hero-sub">اختبر معلوماتك، اعرف القصص الحقيقية، وواجه السؤال الأخير.<br>كل معلومة موثّقة من مصادر فلسطينية
+      وعربية ودولية.</p>
+    <div class="hero-nav">
+      <button class="hero-btn primary" onclick="showPanel('quiz')">🧠 ابدأ الاختبار</button>
+      <button class="hero-btn outline" onclick="showPanel('tf')">⚖️ صح أم خطأ</button>
+      <button class="hero-btn outline" onclick="showPanel('facts')">📊 أرقام وحقائق</button>
+      <button class="hero-btn outline" onclick="showPanel('stories')">📖 قصص لن تُنسى</button>
+      <button class="hero-btn outline" onclick="showPanel('aqsa')" style="border-color:#c8a43a;color:#c8a43a;">🕌 الأقصى محاصَر</button>
+      <button class="hero-btn outline" onclick="showPanel('prisoners')" style="border-color:#b52a2a;color:#b52a2a;">⛓️ الأسرى في خطر</button>
+    </div>
+
+    <!-- Palestinian Symbols -->
+    <div class="symbols-strip">
+      <!-- Olive Branch -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <path d="M18 32 C18 32 8 22 8 14 Q8 4 18 4 Q28 4 28 14 C28 22 18 32 18 32Z" fill="none" stroke="#2d8a52"
+            stroke-width="1.5" />
+          <circle cx="18" cy="14" r="3" fill="#2d8a52" opacity=".4" />
+        </svg>
+        <div class="symbol-label">الزيتون</div>
+      </div>
+      <!-- Key of Return -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <circle cx="12" cy="12" r="8" fill="none" stroke="#c8a43a" stroke-width="1.5" />
+          <circle cx="12" cy="12" r="4" fill="none" stroke="#c8a43a" stroke-width="1" />
+          <line x1="20" y1="12" x2="34" y2="12" stroke="#c8a43a" stroke-width="1.5" />
+          <line x1="30" y1="12" x2="30" y2="18" stroke="#c8a43a" stroke-width="1.5" />
+          <line x1="26" y1="12" x2="26" y2="16" stroke="#c8a43a" stroke-width="1.5" />
+        </svg>
+        <div class="symbol-label">مفتاح العودة</div>
+      </div>
+      <!-- Keffiyeh Pattern -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <rect x="4" y="4" width="28" height="28" rx="4" fill="none" stroke="#f0ebe0" stroke-width="1" opacity=".5" />
+          <path d="M4 12h28M4 20h28M4 28h28M12 4v28M20 4v28M28 4v28" stroke="#f0ebe0" stroke-width=".5" opacity=".3" />
+          <path d="M4 4L12 12M12 4L4 12M20 20L28 28M28 20L20 28M12 20L20 28M20 20L12 28" stroke="#f0ebe0"
+            stroke-width=".7" opacity=".4" />
+        </svg>
+        <div class="symbol-label">الكوفية</div>
+      </div>
+      <!-- Watermelon -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <path d="M6 24 A16 16 0 0 1 30 24 Z" fill="none" stroke="#b52a2a" stroke-width="1.5" />
+          <path d="M10 24 A12 12 0 0 1 26 24" fill="none" stroke="#2d8a52" stroke-width="2" />
+          <circle cx="14" cy="20" r="1" fill="#111" />
+          <circle cx="18" cy="18" r="1" fill="#111" />
+          <circle cx="22" cy="20" r="1" fill="#111" />
+        </svg>
+        <div class="symbol-label">البطيخة</div>
+      </div>
+      <!-- Dome of the Rock -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <path d="M8 28h20v-8h-20z" fill="none" stroke="#c8a43a" stroke-width="1" />
+          <path d="M8 20 Q18 6 28 20" fill="none" stroke="#c8a43a" stroke-width="1.5" />
+          <line x1="18" y1="10" x2="18" y2="6" stroke="#c8a43a" stroke-width="1" />
+          <circle cx="18" cy="5" r="1.5" fill="#c8a43a" opacity=".5" />
+        </svg>
+        <div class="symbol-label">القدس</div>
+      </div>
+      <!-- Handala mini -->
+      <div class="symbol-item">
+        <svg width="36" height="36" viewBox="0 0 36 36">
+          <circle cx="18" cy="8" r="5" fill="none" stroke="#f0ebe0" stroke-width="1" />
+          <line x1="18" y1="13" x2="18" y2="24" stroke="#f0ebe0" stroke-width="1" />
+          <line x1="18" y1="17" x2="12" y2="20" stroke="#f0ebe0" stroke-width="1" />
+          <line x1="18" y1="17" x2="24" y2="15" stroke="#f0ebe0" stroke-width="1" />
+          <line x1="18" y1="24" x2="14" y2="33" stroke="#f0ebe0" stroke-width="1" />
+          <line x1="18" y1="24" x2="22" y2="33" stroke="#f0ebe0" stroke-width="1" />
+        </svg>
+        <div class="symbol-label">حنظلة</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ PANEL -->
+  <div class="panel" id="panel-quiz">
+    <section class="section">
+      <div class="section-label">🧠 اختبار المعرفة</div>
+      <div class="section-sub">أجب واكتشف الحقيقة مع مصادرها — كل سؤال مرتبط بوجه حقيقي</div>
+      <div id="quiz-container"></div>
+      <div id="quiz-result"
+        style="display:none;text-align:center;padding:30px;background:var(--card);border-radius:16px;border:1px solid var(--green);margin-top:20px;">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--green2);margin-bottom:8px;" id="quiz-score-text"></div>
+        <div style="font-size:.85rem;color:var(--text2);" id="quiz-score-msg"></div>
+      </div>
+      <div style="text-align:center;margin-top:20px;">
+        <button class="hero-btn outline" onclick="showPanel('tf')">⚖️ جرّب صح أم خطأ ←</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- TF PANEL -->
+  <div class="panel" id="panel-tf">
+    <section class="section">
+      <div class="section-label">⚖️ صح أم خطأ</div>
+      <div class="section-sub">عبارات سريعة — هل تعرف الحقيقة؟</div>
+      <div id="tf-container"></div>
+      <div style="text-align:center;margin-top:20px;">
+        <button class="hero-btn outline" onclick="showPanel('facts')">📊 أرقام وحقائق ←</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- FACTS PANEL -->
+  <div class="panel" id="panel-facts">
+    <section class="section">
+      <div class="section-label">📊 أرقام وحقائق</div>
+      <div class="section-sub">كل رقم من مصدر موثّق — احفظها وانشرها</div>
+      <div class="facts-grid" id="facts-container"></div>
+
+      <!-- QUOTES -->
+      <div style="margin-top:40px;">
+        <div class="section-label" style="font-size:1.2rem;margin-bottom:20px;">💬 أقوال خالدة</div>
+        <div id="quotes-container"></div>
+      </div>
+      <div style="text-align:center;margin-top:20px;">
+        <button class="hero-btn outline" onclick="showPanel('stories')">📖 القصص ←</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- STORIES PANEL -->
+  <div class="panel" id="panel-stories">
+    <section class="section">
+      <div class="section-label">📖 قصص لن تُنسى</div>
+      <div class="section-sub">وجوه حقيقية — كل واحد منهم كان يعيش ويحلم</div>
+      <div id="stories-container"></div>
+    </section>
+  </div>
+
+  <!-- AQSA PANEL -->
+  <div class="panel" id="panel-aqsa">
+    <section class="section">
+      <div class="section-label">🕌 الأقصى محاصَر</div>
+      <div class="section-sub">الأطول منذ 1967 — المآذن صامتة بلا صلاة</div>
+
+      <div style="background:rgba(200,164,58,.08);border:2px solid #c8a43a;border-radius:16px;padding:24px;margin-bottom:20px;text-align:center;">
+        <div style="font-size:2.2rem;font-weight:900;color:#c8a43a;margin-bottom:6px;">+30 يوماً</div>
+        <div style="font-size:.95rem;color:var(--text);font-weight:600;margin-bottom:8px;">المسجد الأقصى مغلق أمام المصلين — منذ 28 فبراير 2026</div>
+        <div style="font-size:.8rem;color:var(--text2);line-height:1.9;">
+          أُغلق بذريعة حالة الطوارئ وأمدّد الإغلاق حتى 15 أبريل 2026.<br>
+          الأطول منذ احتلال القدس عام 1967 — وفق الأوقاف الإسلامية في القدس.
+        </div>
+        <div style="font-size:.7rem;color:var(--text3);margin-top:8px;">📚 الجزيرة نت | وكالة وفا (wafa.ps) | الأوقاف الإسلامية في القدس</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid #b52a2a;border-radius:12px;padding:16px;">
+          <div style="font-size:.75rem;color:#b52a2a;font-weight:700;margin-bottom:8px;">❌ مُنع لأول مرة منذ عقود</div>
+          <div style="font-size:.85rem;color:var(--text);font-weight:600;line-height:1.8;">صلاة رمضان كاملاً • ليلة القدر • صلاة عيد الفطر (مارس 2026)</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 وفا | الجزيرة | الأوقاف الإسلامية</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid #c8a43a;border-radius:12px;padding:16px;">
+          <div style="font-size:.75rem;color:#c8a43a;font-weight:700;margin-bottom:8px;">📊 2025 — قبل الإغلاق</div>
+          <div style="font-size:.85rem;color:var(--text);font-weight:600;line-height:1.8;">73,000 مستوطن اقتحموا الأقصى في عام 2025 وحده</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 محافظة القدس | نون بوست</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid var(--green);border-radius:12px;padding:16px;">
+          <div style="font-size:.75rem;color:var(--green2);font-weight:700;margin-bottom:8px;">🌍 الإدانة الدولية</div>
+          <div style="font-size:.85rem;color:var(--text);font-weight:600;line-height:1.8;">إيطاليا وفرنسا وإسبانيا والاتحاد الأوروبي أدانوا الإغلاق</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 الأناضول | وفا</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid #b52a2a;border-radius:12px;padding:16px;">
+          <div style="font-size:.75rem;color:#b52a2a;font-weight:700;margin-bottom:8px;">🚫 تكميم الإعلام</div>
+          <div style="font-size:.85rem;color:var(--text);font-weight:600;line-height:1.8;">6 منابر إعلامية فلسطينية صُنّفت "إرهابية" وأُغلقت مع بدء رمضان 2026</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 نون بوست | محافظة القدس</div>
+        </div>
+      </div>
+
+      <div style="background:#0d0d0d;border:1px solid #333;border-radius:12px;padding:20px;text-align:center;margin-bottom:20px;">
+        <div style="font-family:'Amiri',serif;font-size:1rem;font-style:italic;color:var(--text);line-height:2;">
+          «يكاد العقل يطيش... المسجد الأقصى المبارك مغلق منذ 30 يوماً،<br>
+          فلا صلاة تُقام ولا أذان يُرفع، والأمة نائمة كأنها لا ترى ولا تسمع»
+        </div>
+        <div style="font-size:.7rem;color:var(--text3);margin-top:8px;">— ناشط مقدسي على منصة X | مارس 2026</div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px;">
+        <button class="hero-btn outline" onclick="showPanel('prisoners')">⛓️ الأسرى في خطر ←</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRISONERS PANEL -->
+  <div class="panel" id="panel-prisoners">
+    <section class="section">
+      <div class="section-label">⛓️ الأسرى في خطر</div>
+      <div class="section-sub">قانون إعدام الأسرى — أُقرّ بالكنيست 30 مارس 2026</div>
+
+      <div style="background:rgba(181,42,42,.1);border:2px solid #b52a2a;border-radius:16px;padding:24px;margin-bottom:20px;">
+        <div style="font-size:.8rem;color:#b52a2a;font-weight:700;margin-bottom:10px;">🚨 خبر عاجل — أمس 30 مارس 2026</div>
+        <div style="font-size:.95rem;color:var(--text);font-weight:600;line-height:1.9;margin-bottom:10px;">
+          صادق الكنيست الإسرائيلي بالقراءتين الثانية والثالثة على <strong>قانون إعدام الأسرى الفلسطينيين</strong>،
+          بأغلبية 62 صوتاً مقابل 48 معارضاً.
+        </div>
+        <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+          القانون ينص على الإعدام إلزامياً لكل فلسطيني أُدين بقتل إسرائيلي بدوافع مقاومة الاحتلال.<br>
+          يُطبَّق <strong>على الفلسطينيين فقط</strong> — لا يشمل اليهود المتهمين بقتل فلسطينيين.<br>
+          يتضمن بنداً صريحاً يحظر الإفراج عن المحكوم بالإعدام في أي صفقة تبادل مستقبلية.<br>
+          الإعدام يُنفَّذ شنقاً خلال 90 يوماً من صدور الحكم.
+        </div>
+        <div style="font-size:.7rem;color:var(--text3);margin-top:10px;">📚 وكالة وفا (wafa.ps) | الجزيرة | نادي الأسير الفلسطيني | هيئة شؤون الأسرى</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:900;color:#b52a2a;">+9,500</div>
+          <div style="font-size:.75rem;color:var(--text2);margin-top:4px;">أسير فلسطيني في سجون الاحتلال</div>
+          <div style="font-size:.65rem;color:var(--text3);margin-top:4px;">📚 نادي الأسير الفلسطيني</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:900;color:#b52a2a;">~220</div>
+          <div style="font-size:.75rem;color:var(--text2);margin-top:4px;">أسير مهدَّد بالإعدام مباشرة</div>
+          <div style="font-size:.65rem;color:var(--text3);margin-top:4px;">📚 نادي الأسير | الوطن</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:900;color:#c8a43a;">350</div>
+          <div style="font-size:.75rem;color:var(--text2);margin-top:4px;">طفل خلف القضبان</div>
+          <div style="font-size:.65rem;color:var(--text3);margin-top:4px;">📚 هيئة شؤون الأسرى</div>
+        </div>
+      </div>
+
+      <!-- Key prisoners -->
+      <div style="font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:12px;border-right:3px solid #b52a2a;padding-right:10px;">وجوه خلف القضبان — أسرى بارزون</div>
+
+      <div style="display:grid;gap:12px;margin-bottom:20px;">
+
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid var(--green);border-radius:12px;padding:16px;">
+          <div style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px;">⚖️ مروان البرغوثي — الأمين العام لحركة فتح</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-bottom:8px;">معتقل منذ 2002 | 5 أحكام مؤبد + 40 عاماً</div>
+          <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+            قائد الانتفاضة الثانية، يُعدّ من أبرز رموز الحركة الوطنية الفلسطينية. اعتُقل في رام الله 2002 وصدر بحقه حكم بخمسة مؤبدات. دعا من السجن إلى إضرابات الأسرى عام 2017. يُعدّه كثيرون رمزاً للمقاومة السلمية والوحدة الوطنية.
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 هيئة شؤون الأسرى | نادي الأسير | وفا</div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid #c8a43a;border-radius:12px;padding:16px;">
+          <div style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px;">📚 عباس السيد — الشيخ الأسير</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-bottom:8px;">معتقل منذ 2002 | حكم بالمؤبد 35 مرة</div>
+          <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+            من أطول الأسرى فترة في السجون الإسرائيلية. صدر بحقه 35 مؤبداً — وهو رقم قياسي. يُعدّ حالته مثالاً صارخاً على العقوبات الانتقامية المفرطة. مع قانون الإعدام الجديد تصبح قضيته في خطر مضاعف.
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 نادي الأسير الفلسطيني | هيئة شؤون الأسرى</div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid #b52a2a;border-radius:12px;padding:16px;">
+          <div style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px;">🔬 عبد الله البرغوثي — مهندس الكيمياء الأسير</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-bottom:8px;">معتقل منذ 2003 | 67 مؤبداً</div>
+          <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+            يحمل 67 حكماً بالمؤبد — أحد أعلى الأحكام في تاريخ القضاء الإسرائيلي العسكري على الفلسطينيين. ويُجسّد وضعه النمط الانتقامي الممنهج في التعامل مع المعتقلين الفلسطينيين.
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 نادي الأسير الفلسطيني</div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-right:3px solid var(--green);border-radius:12px;padding:16px;">
+          <div style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px;">✊ أسرى حركة حماس من طوفان الأقصى</div>
+          <div style="font-size:.7rem;color:var(--text3);margin-bottom:8px;">اعتُقلوا خلال معارك غزة 2023–2024</div>
+          <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+            نحو 300 من عناصر كتائب القسام اعتُقلوا خلال حرب غزة. هم الأكثر تعرضاً للإعدام بموجب القانون الجديد. تقارير منظمات حقوق الإنسان تؤكد تعرّضهم للتعذيب والتجويع والإهمال الطبي.
+          </div>
+          <div style="font-size:.7rem;color:var(--text3);margin-top:6px;">📚 نادي الأسير | هيئة شؤون الأسرى | Human Rights Watch</div>
+        </div>
+      </div>
+
+      <div style="background:#0d0d0d;border:1px solid #333;border-radius:12px;padding:18px;text-align:center;margin-bottom:16px;">
+        <div style="font-size:.75rem;color:#b52a2a;font-weight:700;margin-bottom:8px;">موقف دولي وفلسطيني موحّد</div>
+        <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+          البرلمان العربي • الاتحاد الأوروبي • ألمانيا • فرنسا • إسبانيا • إيطاليا • الأردن • مصر • العراق:<br>
+          <strong style="color:var(--text);">«جريمة حرب — انتهاك فاضح لاتفاقيات جنيف والقانون الدولي الإنساني»</strong>
+        </div>
+        <div style="font-size:.65rem;color:var(--text3);margin-top:8px;">📚 وفا 31/3/2026 | الجزيرة | العربي الجديد</div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px;">
+        <button class="hero-btn outline" onclick="showPanel('stories')">📖 قصص لن تُنسى ←</button>
+      </div>
+    </section>
+  </div>
+
+
+  <div class="panel" id="panel-final" style="display:none;">
+    <section class="final-section">
+      <div class="final-names">
+      <span class="final-name">مروان البرغوثي — أسير منذ 2002 | 5 مؤبدات | رمز لم يُكسَر</span>
+        <span class="final-name">شيرين أبو عاقلة — قُتلت وهي تُوثّق</span>
+        <span class="final-name">رزان النجار — قُتلت وهي تُسعف</span>
+        <span class="final-name">رفعت العرعير — قُتل وهو يكتب</span>
+        <span class="final-name">هند رجب — قُتلت وهي تطلب النجاة</span>
+        <span class="final-name">غسان كنفاني — قُتل وهو يُفكّر</span>
+        <span class="final-name">ناجي العلي — قُتل وهو يرسم</span>
+        <span class="final-name">الشيخ أحمد ياسين — اغتيل وهو خارج من صلاة الفجر</span>
+        <span class="final-name">محمد الزواري — اغتيل في صفاقس وهو يُطيّر أبابيل فلسطين</span>
+      </div>
+      <div class="final-q">
+        كل واحد من هؤلاء قدّم ما يملك.<br><br>
+        أنت وصلت للجامعة.<br>
+        لديك صوت. لديك هاتف. لديك وقت. لديك عقل.<br><br>
+        <span class="bighl">— ماذا فعلت؟ —</span><br><br>
+        وإن لم تكن فعلت شيئاً بعد...<br>
+        <span class="bighl">— ماذا تنتظر؟ —</span>
+      </div>
+      <div class="final-mirror">
+        المعرفة التي تقف بلا حراك... هل هي حقاً معرفة؟<br>
+        شارك. قاطع. تكلّم. لا تكن شاهد زور.
+      </div>
+    </section>
+  </div>
+
+  <!-- SCORE BAR -->
+  <div class="score-bar" id="score-bar">
+    <span>النتيجة:</span>
+    <span class="score-val" id="score-display">0</span>
+    <span style="color:var(--text3)">|</span>
+    <span id="answered-display">0</span><span style="color:var(--text3)"> / <span id="total-display">0</span></span>
+  </div>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" id="scroll-top-btn" onclick="window.scrollTo({top:0})">↑</button>
+
+  <!-- FOOTER -->
+  <footer>
+    المصادر: الأونروا (unrwa.org) | وكالة وفا (wafa.ps) | مؤسسة الدراسات الفلسطينية (palestine-studies.org) | Palestine
+    Remembered<br>
+    OHCHR | يونيسف | CPJ | BBC عربي | الجزيرة | Human Rights Watch<br><br>
+    🇵🇸 للتوزيع الحر — انشر المعرفة
+  </footer>
+
+  <script>
+    // ====== DATA ======
+
+    const quizData = [
+      {
+        person: "🌸 هند رجب", role: "طفلة 6 سنوات | يناير 2024 | غزة",
+        q: "ما الذي حدث لهند رجب حين اتصلت بالهلال الأحمر الفلسطيني؟",
+        opts: ["تم إنقاذها ونقلها لمستشفى", "قُتلت مع المسعفَين الذين جاؤوا لإنقاذها", "أُخليت إلى جنوب غزة", "نجت وهاجرت مع عائلتها"],
+        correct: 1,
+        explain: "هند ذات الست سنوات كانت محاصرة بين جثث ستة من ذويها في سيارة. ظلّت على الهاتف ساعات تطلب النجاة. أُرسل مسعفان — وُجدت جثثهم الثلاثة في السيارة المحترقة. لا تحقيق دولي مستقل.",
+        src: "الهلال الأحمر الفلسطيني | Human Rights Watch | BBC عربي"
+      },
+      {
+        person: "🙏 الشيخ أحمد ياسين", role: "مؤسس حركة حماس — اغتيل 2004",
+        q: "كيف اغتيل الشيخ أحمد ياسين؟",
+        opts: ["في اشتباك مسلح", "اعتُقل وتوفي في السجن", "بصاروخ من طائرة بعد صلاة الفجر وهو على كرسيه المتحرك", "في تفجير سيارة"],
+        correct: 2,
+        explain: "كان الشيخ أحمد ياسين مشلولاً رباعياً منذ صغره. أطلقت طائرة إسرائيلية صاروخاً عليه لحظة خروجه من المسجد بعد صلاة الفجر في مارس 2004. اغتيل وهو على كرسيه المتحرك.",
+        src: "BBC عربي | الجزيرة | وكالة وفا (wafa.ps)"
+      },
+      {
+        person: "📺 شيرين أبو عاقلة", role: "صحفية الجزيرة — اغتيلت مايو 2022 | جنين",
+        q: "ماذا كانت شيرين ترتدي لحظة إطلاق النار عليها؟",
+        opts: ["ملابس عادية بدون أي علامات", "خوذة وسترة عليها كلمة PRESS بوضوح", "زي عسكري", "معطف أبيض طبي"],
+        correct: 1,
+        explain: "كانت ترتدي خوذة وسترة واقية مكتوب عليها PRESS بشكل واضح. تحقيق مفوضية الأمم المتحدة لحقوق الإنسان خلص إلى أن النار أُطلقت من قوات إسرائيلية. لم يُحاسَب أحد.",
+        src: "OHCHR 2022 (un.org) | الجزيرة"
+      },
+      {
+        person: "✏️ ناجي العلي وحنظلة", role: "رسام كاريكاتير — اغتيل في لندن 1987",
+        q: "لماذا يُدير حنظلة ظهره دائماً ولا يُظهر وجهه؟",
+        opts: ["لأنه يبكي من الحزن", "لأن ناجي لم يُجد رسم الوجوه", "لأنه أبى أن يُري وجهه حتى تتحرر فلسطين", "لأنه يراقب العدو خلفه"],
+        correct: 2,
+        explain: "حنظلة طفل في العاشرة — نفس عمر ناجي العلي حين غادر فلسطين. ظهره للعالم موقف: لن يُري وجهه حتى يعود. ناجي اغتيل في لندن عام 1987 برصاصة في وجهه.",
+        src: "أرشيف ناجي العلي | مؤسسة الدراسات الفلسطينية (palestine-studies.org)"
+      },
+      {
+        person: "🕊️ رفعت العرعير", role: "شاعر وأستاذ جامعي — استُشهد ديسمبر 2023 | غزة",
+        q: "ما مطلع قصيدة رفعت الشهيرة التي طافت العالم؟",
+        opts: ["«غزة لن تموت أبداً»", "«إذا كان لا بد أن أموت فليكن موتي قصة»", "«أنا أكتب لأحيا وأموت»", "«وطني يسكن في دمي»"],
+        correct: 1,
+        explain: "كتب رفعت هذه القصيدة قبل أسابيع من استشهاده في غارة إسرائيلية على حي الشجاعية. قُرئت في البرلمان البريطاني والأيرلندي وانتشرت في أنحاء العالم.",
+        src: "حساب رفعت العرعير الرسمي | The Guardian | BBC عربي"
+      },
+      {
+        person: "🔑 النكبة 1948", role: "الذاكرة الجماعية الفلسطينية",
+        q: "كم قرية فلسطينية دُمِّرت أو هُجِّرت عام 1948؟",
+        opts: ["أكثر من 100 قرية", "أكثر من 250 قرية", "أكثر من 530 قرية", "أكثر من 900 قرية"],
+        correct: 2,
+        explain: "أكثر من 530 قرية ومدينة فلسطينية دُمِّرت أو هُجِّر أهلها عام 1948، وهُجِّر أكثر من 750,000 فلسطيني فيما يُعرف بالنكبة.",
+        src: "Palestine Remembered (palestineremembered.com) | مؤسسة الدراسات الفلسطينية"
+      },
+      {
+        person: "⚔️ يحيى السنوار", role: "رئيس حركة حماس في غزة",
+        q: "كيف خرج يحيى السنوار من السجون الإسرائيلية؟",
+        opts: ["هرب من السجن", "أُفرج عنه في صفقة تبادل أسرى 2011", "قضى محكوميته كاملة", "عفو رئاسي"],
+        correct: 1,
+        explain: "أُفرج عن السنوار ضمن صفقة شاليط 2011: كان قد قضى 22 عاماً في السجن.",
+        src: "وكالة وفا (wafa.ps) | الجزيرة"
+      },
+      {
+        person: "🩺 رزان النجار", role: "مسعفة متطوعة — استُشهدت يونيو 2018 | غزة",
+        q: "ماذا كانت رزان النجار تفعل لحظة إطلاق النار عليها؟",
+        opts: ["تشارك في مظاهرة", "تُسعف الجرحى على حدود غزة وهي ترفع يديها", "تحمل سلاحاً", "تحاول عبور السياج"],
+        correct: 1,
+        explain: "رزان النجار كانت متطوعة في الطواقم الطبية. أُصيبت برصاصة حية في صدرها وهي ترفع يديها وتقترب لإسعاف الجرحى خلال مسيرات العودة الكبرى. عمرها 21 سنة.",
+        src: "وزارة الصحة الفلسطينية | الأونروا | BBC عربي"
+      },
+      {
+        person: "📚 غسان كنفاني", role: "أديب ومفكر — اغتيل في بيروت 1972",
+        q: "كيف اغتيل غسان كنفاني؟",
+        opts: ["بإطلاق نار في الشارع", "بتفجير سيارته المفخخة أمام منزله", "في غارة جوية", "مسموماً"],
+        correct: 1,
+        explain: "اغتيل غسان كنفاني بتفجير سيارته المفخخة في بيروت في يوليو 1972 على يد الموساد. استُشهدت معه ابنة أخته لميس. كان عمره 36 عاماً فقط.",
+        src: "مؤسسة غسان كنفاني الثقافية | مؤسسة الدراسات الفلسطينية"
+      },
+      {
+        person: "🕌 المسجد الأقصى", role: "مارس 2026 — القدس المحتلة",
+        q: "كم يوماً أُغلق المسجد الأقصى أمام المصلين في مارس 2026؟",
+        opts: ["7 أيام فقط", "15 يوماً", "أكثر من 30 يوماً — الأطول منذ 1967", "إغلاق لأسبوع فقط في رمضان"],
+        correct: 2,
+        explain: "منذ 28 فبراير 2026 أغلقت سلطات الاحتلال الأقصى وأمدّدت الإغلاق حتى 15 أبريل 2026 — وهو أطول إغلاق منذ احتلال القدس عام 1967. مُنعت صلاة رمضان وليلة القدر وصلاة عيد الفطر لأول مرة منذ عقود.",
+        src: "الأوقاف الإسلامية في القدس | الجزيرة نت | وكالة وفا"
+      },
+      {
+        person: "⛓️ قانون إعدام الأسرى", role: "30 مارس 2026 — الكنيست الإسرائيلي",
+        q: "ماذا يتضمن قانون إعدام الأسرى الذي أقرّه الكنيست أمس؟",
+        opts: ["إطلاق سراح الأسرى المرضى", "الإعدام إلزامياً للفلسطينيين فقط مع حظر إدراجهم في صفقات تبادل", "تخفيف أحكام المؤبد", "محاكمات مدنية بدل عسكرية"],
+        correct: 1,
+        explain: "القانون يفرض عقوبة الإعدام إلزامياً على الفلسطينيين المدانين بقتل إسرائيليين بدوافع مقاومة — ويُطبَّق على الفلسطينيين دون اليهود. ويحظر صراحةً الإفراج عن المحكوم بالإعدام في أي صفقة تبادل مستقبلية. الرئاسة الفلسطينية وصفته بـ«جريمة حرب».",
+        src: "وكالة وفا 31/3/2026 | الجزيرة | العربي الجديد | نادي الأسير الفلسطيني"
+      },
+      {
+        person: "⚖️ مروان البرغوثي", role: "أسير منذ 2002 | رمز الوحدة الوطنية",
+        q: "كم عدد أحكام المؤبد الصادرة بحق مروان البرغوثي؟",
+        opts: ["حكم مؤبد واحد", "3 أحكام مؤبد", "5 أحكام مؤبد + 40 عاماً", "لم يصدر بحقه حكم بعد"],
+        correct: 2,
+        explain: "صدر بحق مروان البرغوثي خمسة أحكام بالمؤبد وأربعون عاماً إضافية. اعتُقل عام 2002 ولا يزال يقبع في السجن حتى اليوم. يُعدّه كثيرون رمزاً للوحدة الوطنية وزعيماً للانتفاضة الثانية.",
+        src: "هيئة شؤون الأسرى والمحررين | نادي الأسير الفلسطيني | وفا"
+      },
+      {
+        person: "🎤 أبو عبيدة", role: "الناطق العسكري باسم كتائب القسام",
+        q: "ما اسم الكتائب العسكرية التي يتحدث باسمها أبو عبيدة؟",
+        opts: ["كتائب شهداء الأقصى", "كتائب عز الدين القسام", "سرايا القدس", "كتائب أبو علي مصطفى"],
+        correct: 1,
+        explain: "أبو عبيدة هو الناطق العسكري باسم كتائب عز الدين القسام، الجناح العسكري لحركة حماس. يظهر دائماً ملثماً وأصبح من أبرز الوجوه الإعلامية للمقاومة.",
+        src: "كتائب القسام — الموقع الرسمي | الجزيرة"
+      },
+      {
+        person: "🇹🇳 محمد الزواري", role: "مهندس تونسي من صفاقس — اغتاله الموساد ديسمبر 2016",
+        q: "ما المشروع الذي أشرف عليه المهندس التونسي محمد الزواري داخل كتائب القسام؟",
+        opts: ["شبكة أنفاق المقاومة", "مشروع طائرات أبابيل المسيّرة", "منظومة صواريخ القسام", "شبكة اتصالات مشفرة"],
+        correct: 1,
+        explain: "محمد الزواري مهندس تونسي من صفاقس، أشرف على تطوير طائرات أبابيل المسيّرة في كتائب القسام. اغتاله الموساد أمام منزله في صفاقس بـ8 رصاصات في ديسمبر 2016. بلدية صفاقس غيّرت اسم شارعه إلى «نهج الشهيد محمد الزواري». طائراته لعبت دوراً في طوفان الأقصى 2023.",
+        src: "كتائب القسام | يورونيوز عربي | بوابة صفاقس الإلكترونية | نون بوست"
+      }
+    ];
+
+    const tfData = [
+      { stmt: "قانون إعدام الأسرى الإسرائيلي يطبّق على الفلسطينيين واليهود على حدٍّ سواء.", answer: false, explain: "القانون يُطبَّق على الفلسطينيين فقط — لا يشمل اليهود المتهمين بقتل فلسطينيين. وصفه خبراء قانونيون بـ«القانون العنصري التمييزي».", src: "وكالة وفا | الجزيرة | نادي الأسير", person: "⛓️ قانون إعدام الأسرى 2026" },
+      { stmt: "صلاة عيد الفطر مارس 2026 أُقيمت في المسجد الأقصى كالمعتاد.", answer: false, explain: "لم تُقَم صلاة العيد في الأقصى — مُنعت لأول مرة منذ عقود بسبب الإغلاق الشامل المستمر منذ 28 فبراير 2026.", src: "الأوقاف الإسلامية في القدس | وفا | الجزيرة", person: "🕌 الأقصى — مارس 2026" },
+      { stmt: "مروان البرغوثي يقضي في السجن خمسة أحكام مؤبد وأربعين عاماً إضافية.", answer: true, explain: "اعتُقل عام 2002 وصدرت بحقه هذه الأحكام. لا يزال خلف القضبان ويُعدّ من أبرز الرموز الوطنية الفلسطينية في الأسر.", src: "هيئة شؤون الأسرى | نادي الأسير الفلسطيني | وفا", person: "⚖️ مروان البرغوثي" },
+      { stmt: "أُنقذت هند رجب بعد اتصالها بالهلال الأحمر الفلسطيني.", answer: false, explain: "لم تُنقذ. وُجدت جثتها مع المسعفَين اللذين أُرسلا لإنقاذها في السيارة المحترقة.", src: "الهلال الأحمر الفلسطيني | HRW", person: "👶 هند رجب" },
+      { stmt: "خلص تحقيق الأمم المتحدة إلى أن النار على شيرين أبو عاقلة أُطلقت من قوات إسرائيلية.", answer: true, explain: "تحقيق OHCHR 2022 خلص لذلك بشكل واضح. لا محاسبة حتى الآن.", src: "OHCHR 2022 — un.org", person: "📺 شيرين أبو عاقلة" },
+      { stmt: "البطيخة أصبحت رمزاً فلسطينياً حين مُنع رفع العلم.", answer: true, explain: "بعد حظر العلم الفلسطيني عام 1967، رسم الفلسطينيون البطيخة لأن قطعها يُظهر ألوان العلم الأربعة: أحمر وأخضر وأسود وأبيض.", src: "مؤسسة الدراسات الفلسطينية", person: "🍉 البطيخة الفلسطينية" },
+      { stmt: "أُفرج عن يحيى السنوار ضمن صفقة تبادل أسرى.", answer: true, explain: "صفقة شاليط 2011: أُفرج عن 1027 أسيراً فلسطينياً مقابل جندي إسرائيلي واحد.", src: "وكالة وفا | الجزيرة", person: "⚔️ يحيى السنوار" },
+      { stmt: "كان الشيخ أحمد ياسين قادراً على المشي حين اغتيل.", answer: false, explain: "كان مشلولاً رباعياً منذ صغره. لم يكن يتحرك إلا بكرسي متحرك.", src: "BBC عربي | الجزيرة", person: "🙏 الشيخ أحمد ياسين" },
+      { stmt: "قرار الأمم المتحدة 194 الخاص بحق العودة طُبِّق فعلياً.", answer: false, explain: "صدر عام 1948 لكنه لم يُطبَّق أبداً. ملايين اللاجئين لا يزالون يُطالبون بحقهم في العودة.", src: "الأمم المتحدة | مؤسسة الدراسات الفلسطينية", person: "⚖️ قرار 194" },
+      { stmt: "التطريز الفلسطيني (التتريز) مسجّل في التراث العالمي لليونسكو.", answer: true, explain: "سجّلته اليونسكو عام 2021 كتراث ثقافي غير مادي. كل منطقة فلسطينية لها نقوش مميزة تحكي قصتها.", src: "اليونسكو 2021 | وكالة وفا", person: "🧵 التطريز الفلسطيني" },
+      { stmt: "غسان كنفاني اغتيل وعمره 60 عاماً.", answer: false, explain: "اغتيل وعمره 36 عاماً فقط في بيروت 1972 بتفجير سيارته. ترك إرثاً أدبياً ضخماً في سنوات قليلة.", src: "مؤسسة غسان كنفاني الثقافية", person: "📚 غسان كنفاني" },
+      { stmt: "المهندس التونسي محمد الزواري اغتيل في فلسطين.", answer: false, explain: "اغتيل في مدينة صفاقس بتونس أمام منزله على يد الموساد. لم يكن في فلسطين بل خدم القضية من تونس وسوريا والسودان.", src: "يورونيوز عربي | ويكيبيديا | نون بوست", person: "🇹🇳 محمد الزواري" }
+    ];
+
+    const factsData = [
+      { num: "+750,000", label: "فلسطيني هُجِّروا في النكبة 1948", src: "مؤسسة الدراسات الفلسطينية | الأونروا", color: "red" },
+      { num: "+530", label: "قرية فلسطينية دُمِّرت أو هُجِّرت عام 1948", src: "Palestine Remembered", color: "red" },
+      { num: "+5.9 مليون", label: "لاجئ فلسطيني مسجّل لدى الأونروا حول العالم", src: "الأونروا 2023", color: "gold" },
+      { num: "+72,000", label: "شهيد في غزة منذ أكتوبر 2023", src: "وزارة الصحة الفلسطينية | وفا مارس 2026", color: "red" },
+      { num: "30+ يوماً", label: "المسجد الأقصى مغلق — الأطول منذ 1967", src: "الأوقاف الإسلامية في القدس | الجزيرة 2026", color: "gold" },
+      { num: "62 / 48", label: "تصويت الكنيست على إعدام الأسرى — 30 مارس 2026", src: "وفا | الجزيرة | العربي الجديد", color: "red" },
+      { num: "+9,500", label: "أسير فلسطيني في سجون الاحتلال — منهم 350 طفلاً", src: "نادي الأسير الفلسطيني | هيئة شؤون الأسرى", color: "red" },
+      { num: "73,000", label: "مستوطن اقتحم الأقصى في عام 2025 وحده", src: "محافظة القدس | نون بوست", color: "gold" },
+      { num: "+180", label: "صحفي ومُوثِّق استُشهد في غزة — رقم تاريخي", src: "لجنة حماية الصحفيين CPJ 2024", color: "red" },
+      { num: "5000+ سنة", label: "عمر مدينة أريحا — أقدم مدينة في التاريخ", src: "اليونسكو | مؤسسة الدراسات الفلسطينية", color: "gold" }
+    ];
+
+    const storiesData = [
+      { title: "🌸 هند رجب — الطفلة التي طلبت النجاة", role: "6 سنوات | 29 يناير 2024 | غزة", body: 'هند رجب ذات الست سنوات كانت محاصرة داخل سيارة بين جثث ستة من عائلتها. اتصلت بالهلال الأحمر: <strong>«تعالوا خذوني، أنا خايفة»</strong>. ظلّت على الهاتف ساعات وصوت الدبابات حولها. أُرسل مسعفان لإنقاذها — ثم انقطع الاتصال. بعد أيام وُجدت جثثهم الثلاثة في السيارة المحترقة.', src: "الهلال الأحمر الفلسطيني | Human Rights Watch | BBC عربي", green: false },
+      { title: "📺 شيرين أبو عاقلة — صوت فلسطين الذي أسكتوه", role: "صحفية الجزيرة لمدة 25 عاماً | اغتيلت مايو 2022 | جنين", body: 'أُصيبت برصاصة قنّاص في رأسها وهي ترتدي <strong>خوذة وسترة PRESS</strong>. كانت تُوثّق اقتحام مخيم جنين. تحقيق الأمم المتحدة: النار من قوات إسرائيلية. لم يُعتَقل أحد. لم يُحاكَم أحد.', src: "OHCHR 2022 | الجزيرة | وكالة وفا", green: true },
+      { title: "🕊️ رفعت العرعير — الشاعر الذي كتب نعيه", role: "شاعر وأستاذ جامعي | استُشهد ديسمبر 2023 | غزة", body: 'كتب <strong>«إذا كان لا بد أن أموت فليكن موتي قصة»</strong> قبل أسابيع من استشهاده في غارة على حي الشجاعية. كان يُدرّس الأدب الإنجليزي ويؤسس ورش كتابة إبداعية تحت الحصار. قُرئت قصيدته في البرلمان البريطاني والأيرلندي.', src: "The Guardian | BBC عربي | حساب رفعت الرسمي", green: false },
+      { title: "🩺 رزان النجار — الملاك الأبيض", role: "مسعفة متطوعة 21 عاماً | استُشهدت يونيو 2018 | غزة", body: 'تطوّعت رزان في الطواقم الطبية لإسعاف الجرحى في مسيرات العودة الكبرى. أُصيبت <strong>برصاصة حية في صدرها</strong> وهي ترفع يديها وتتقدم لإسعاف الجرحى. ارتدت المريول الأبيض الطبي لتكون مرئية — لكنهم رأوها واستهدفوها.', src: "وزارة الصحة الفلسطينية | الأونروا | BBC عربي", green: true },
+      { title: "📚 غسان كنفاني — القلم الذي فجّروه", role: "أديب ومفكر | اغتيل يوليو 1972 | بيروت", body: 'اغتيل بتفجير سيارته المفخخة أمام منزله في بيروت على يد الموساد. <strong>استُشهدت معه ابنة أخته لميس ذات الـ17 عاماً</strong>. كان عمره 36 عاماً فقط لكنه ترك روايات غيّرت الوعي العربي: «رجال في الشمس» و«عائد إلى حيفا». قالت غولدا مائير: «قتلنا الكاتب الخطير».', src: "مؤسسة غسان كنفاني الثقافية | مؤسسة الدراسات الفلسطينية", green: false },
+      { title: "✏️ ناجي العلي — الرسام الذي قتلته رصاصة في وجهه", role: "رسام كاريكاتير | اغتيل يوليو 1987 | لندن", body: 'أبدع <strong>حنظلة</strong> — الطفل الذي أبى أن يكبر أو يُدير وجهه للعالم حتى يعود لفلسطين. ناجي غادر فلسطين وعمره 10 سنوات — نفس عمر حنظلة. اغتيل في لندن برصاصة في وجهه. لم تُكشف هوية القاتل رسمياً.', src: "أرشيف ناجي العلي | مؤسسة الدراسات الفلسطينية", green: true },
+      { title: "🇹🇳 محمد الزواري — مهندس تونس الذي طيّر أبابيل فلسطين", role: "مهندس من صفاقس | اغتاله الموساد ديسمبر 2016 | تونس", body: 'مهندس تونسي من صفاقس، تخرّج من المدرسة الوطنية للمهندسين. عاش في المنفى 20 عاماً متخفياً باسم «مراد». انضم لكتائب القسام وأشرف على تطوير <strong>طائرات أبابيل المسيّرة</strong>. اغتاله الموساد أمام منزله في صفاقس بـ8 رصاصات. بلدية صفاقس غيّرت اسم شارعه تكريماً له. طائراته التي طوّرها لعبت دوراً في <strong>طوفان الأقصى 2023</strong> — وأُنشئت «وحدة أبناء الزواري» باسمه.', src: "يورونيوز عربي | كتائب القسام | بوابة صفاقس الإلكترونية | نون بوست", green: false }
+    ];
+
+    const quotesData = [
+      { text: "«أنا لا أرسم للمجلات... أنا أرسم للناس»", author: "ناجي العلي — خالق حنظلة" },
+      { text: "«على هذه الأرض ما يستحق الحياة»", author: "محمود درويش" },
+      { text: "«إذا كان لا بد أن أموت، فليكن موتي قصة»", author: "رفعت العرعير" },
+      { text: "«ما القضية؟ ليست قضية فحسب... إنها قضية وطن»", author: "غسان كنفاني" },
+      { text: "«أنا لست رقماً... أنا هند»", author: "في ذكرى هند رجب — 6 سنوات" }
+    ];
+
+    // ====== STATE ======
+    let score = 0, answered = 0;
+    const totalQ = quizData.length + tfData.length;
+
+    // ====== RENDER ======
+    function renderQuiz() {
+      const c = document.getElementById('quiz-container');
+      c.innerHTML = quizData.map((q, i) => `
+    <div class="quiz-card animate" style="animation-delay:${i * 0.05}s" id="qcard-${i}">
+      <div class="qc-header">
+        <div class="qc-num">${i + 1}</div>
+        <div><div class="qc-person">${q.person}</div><div class="qc-role">${q.role}</div></div>
+      </div>
+      <div class="qc-question">${q.q}</div>
+      <div class="qc-opts">
+        ${q.opts.map((o, j) => `<div class="qc-opt" data-qi="${i}" data-oi="${j}" onclick="answerQuiz(${i},${j})">${o}</div>`).join('')}
+      </div>
+      <div class="qc-explain" id="qexp-${i}">
+        ${q.explain}<br>
+        <div class="qc-source">📚 ${q.src}</div>
+      </div>
+    </div>
+  `).join('');
+      document.getElementById('total-display').textContent = totalQ;
+    }
+
+    function renderTF() {
+      const c = document.getElementById('tf-container');
+      c.innerHTML = tfData.map((t, i) => `
+    <div class="tf-card animate" style="animation-delay:${i * 0.05}s" id="tfcard-${i}">
+      <div style="font-size:.75rem;color:var(--text3);margin-bottom:8px;">${t.person}</div>
+      <div class="tf-stmt">${t.stmt}</div>
+      <div class="tf-btns">
+        <div class="tf-btn" data-ti="${i}" data-val="true" onclick="answerTF(${i},true)">✓ صح</div>
+        <div class="tf-btn" data-ti="${i}" data-val="false" onclick="answerTF(${i},false)">✗ خطأ</div>
+      </div>
+      <div class="qc-explain" id="tfexp-${i}">
+        ${t.explain}<br>
+        <div class="qc-source">📚 ${t.src}</div>
+      </div>
+    </div>
+  `).join('');
+    }
+
+    function renderFacts() {
+      const c = document.getElementById('facts-container');
+      c.innerHTML = factsData.map((f, i) => `
+    <div class="fact-card animate" style="animation-delay:${i * 0.04}s">
+      <div class="fact-num ${f.color}">${f.num}</div>
+      <div class="fact-label">${f.label}</div>
+      <div class="fact-src">📚 ${f.src}</div>
+    </div>
+  `).join('');
+    }
+
+    function renderStories() {
+      const c = document.getElementById('stories-container');
+      c.innerHTML = storiesData.map((s, i) => `
+    <div class="story-card ${s.green ? 'green-border' : ''} animate" style="animation-delay:${i * 0.06}s">
+      <div class="story-title">${s.title}</div>
+      <div class="story-role">${s.role}</div>
+      <div class="story-body">${s.body}</div>
+      <div class="story-src">📚 ${s.src}</div>
+    </div>
+  `).join('');
+    }
+
+    function renderQuotes() {
+      const c = document.getElementById('quotes-container');
+      c.innerHTML = quotesData.map((q, i) => `
+    <div class="quote-card animate" style="animation-delay:${i * 0.05}s">
+      <div class="quote-text">${q.text}</div>
+      <div class="quote-author">— ${q.author}</div>
+    </div>
+  `).join('');
+    }
+
+    // ====== INTERACTIONS ======
+    function answerQuiz(qi, oi) {
+      const card = document.getElementById(`qcard-${qi}`);
+      if (card.classList.contains('answered')) return;
+      card.classList.add('answered');
+
+      const opts = card.querySelectorAll('.qc-opt');
+      opts.forEach((o, j) => {
+        o.classList.add('disabled');
+        if (j === quizData[qi].correct) o.classList.add('correct');
+        if (j === oi && j !== quizData[qi].correct) o.classList.add('wrong');
+      });
+
+      if (oi === quizData[qi].correct) score++;
+      answered++;
+
+      document.getElementById(`qexp-${qi}`).classList.add('show');
+      updateScore();
+    }
+
+    function answerTF(ti, val) {
+      const card = document.getElementById(`tfcard-${ti}`);
+      if (card.classList.contains('answered')) return;
+      card.classList.add('answered');
+
+      const btns = card.querySelectorAll('.tf-btn');
+      btns.forEach(b => {
+        b.classList.add('disabled');
+        const bval = b.dataset.val === 'true';
+        if (bval === tfData[ti].answer) b.classList.add('right');
+        if (bval === val && val !== tfData[ti].answer) b.classList.add('wrongpick');
+      });
+
+      if (val === tfData[ti].answer) score++;
+      answered++;
+
+      document.getElementById(`tfexp-${ti}`).classList.add('show');
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById('score-display').textContent = score;
+      document.getElementById('answered-display').textContent = answered;
+      document.getElementById('score-bar').classList.add('show');
+
+      if (answered >= totalQ) {
+        const res = document.getElementById('quiz-result');
+        res.style.display = 'block';
+        const pct = Math.round(score / totalQ * 100);
+        document.getElementById('quiz-score-text').textContent = `${score} / ${totalQ} — ${pct}%`;
+        const msgs = pct >= 90 ? 'ممتاز! معرفتك بالقضية الفلسطينية عميقة 🇵🇸' : pct >= 70 ? 'جيد جداً! لكن لا تزال هناك تفاصيل تستحق أن تعرفها' : pct >= 50 ? 'لا بأس — لكن القضية تستحق أن تعرف أكثر' : 'كل إجابة خاطئة هي فرصة لتتعلم شيئاً جديداً — ابدأ من القصص';
+        document.getElementById('quiz-score-msg').textContent = msgs;
+      }
+    }
+
+    function showPanel(name) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      const panel = document.getElementById(`panel-${name}`);
+      if (panel) panel.classList.add('active');
+
+      // Always show final after stories
+      const finalPanel = document.getElementById('panel-final');
+      if (name === 'stories') finalPanel.style.display = 'block';
+      else finalPanel.style.display = 'none';
+
+      // Show score bar for quiz/tf
+      if (name === 'quiz' || name === 'tf') {
+        if (answered > 0) document.getElementById('score-bar').classList.add('show');
+      }
+
+      window.scrollTo({ top: document.getElementById('hero').offsetHeight - 60, behavior: 'smooth' });
+    }
+
+    // Scroll top button
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scroll-top-btn');
+      if (window.scrollY > 400) btn.classList.add('show');
+      else btn.classList.remove('show');
+    });
+
+    // ====== INIT ======
+    renderQuiz();
+    renderTF();
+    renderFacts();
+    renderStories();
+    renderQuotes();
+  </script>
+
+</body>
+
+</html>
